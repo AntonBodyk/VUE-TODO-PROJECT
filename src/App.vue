@@ -1,26 +1,43 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="app">
+        <todo-header @create="addTask"/>
+        <new-task :newtasks="newtasks"/>
+        <completed-task/>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+import TodoHeader from './components/TodoHeader.vue';
+import NewTask from './components/NewTask.vue';
+import CompletedTask from './components/CompletedTask.vue';
+    export default {
+      components: {
+        TodoHeader, NewTask, CompletedTask
+      },
+      data() {
+        return {
+          newtasks: [],
+          completedtasks: []
+        }
+      },
+      methods: {
+        addTask(task) {
+              this.newtasks.push(task);
+          }
+      }
   }
-}
+    
+    
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style>
+    body {
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: 300;
+    }
+    .container {
+      width: 800px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
 </style>
