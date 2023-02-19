@@ -1,8 +1,8 @@
 <template>
     <div class="app">
         <todo-header @create="addTask"/>
-        <new-task :newtasks="newtasks"/>
-        <completed-task/>
+        <new-task :newtasks="newtasks" :completedtasks="completedtasks" @remove="removeTask"/>
+        <completed-task :completedtasks="completedtasks" :newtasks="newtasks" @remove="removeCompletedTask"/>
     </div>
 </template>
 
@@ -23,10 +23,15 @@ import CompletedTask from './components/CompletedTask.vue';
       methods: {
         addTask(task) {
               this.newtasks.push(task);
-          }
-      }
+          },
+        removeTask(task) {
+          this.newtasks = this.newtasks.filter(item => item.id !== task.id);
+        },
+        removeCompletedTask(task) {
+          this.completedtasks = this.completedtasks.filter(item => item.id !== task.id)
+        }
   }
-    
+}   
     
 </script>
 

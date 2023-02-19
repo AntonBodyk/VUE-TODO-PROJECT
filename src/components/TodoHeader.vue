@@ -7,6 +7,7 @@
                     type="text"
                     v-model="task.inputValue"
                     @input="updateInput"
+                    v-on:keypress.enter="addTask"
                     > 
                 <button @click="addTask" class="btn">Add a new task</button>
             </form>

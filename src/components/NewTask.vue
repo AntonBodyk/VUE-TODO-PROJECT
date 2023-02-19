@@ -7,10 +7,10 @@
       <ul class="mask-list">
         <li v-for="task of newtasks" :key="task.id">
           <div>
-            <input type="checkbox"/>
+            <input type="checkbox" v-on:change="newChacked(index, 'new')"/>
             <span>{{task.inputValue}}</span>
           </div>
-          <button class="btn-remove">Remove</button>
+          <button class="btn-remove" @click="$emit('remove', task)">Remove</button>
         </li>
       </ul>
     </div>
@@ -22,6 +22,18 @@
             newtasks: {
                 type: Array,
                 required: true
+            },
+            completedtasks: {
+                type: Array,
+                required: true
+            }
+        },
+        methods: {
+            newChacked(index, type) {
+                if(type === 'new') {
+                    const checkedTask = this.newtasks.splice(index, 1);
+                    this.completedtasks.push(...checkedTask);
+                }
             }
         }
     }
