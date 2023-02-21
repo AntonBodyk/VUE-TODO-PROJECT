@@ -26,7 +26,7 @@
             completedtasks: {
                 type: Array,
                 required: true
-            }
+            }     
         },
         methods: {
             newChacked(index, type) {

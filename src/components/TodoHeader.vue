@@ -2,14 +2,14 @@
     <header class="header">
       <div class="container">
         <div class="logo">ToDo List</div>
-            <form class="form" @submit.prevent>
+            <form class="form" @submit.prevent="addTask">
                 <input
                     type="text"
                     v-model="task.inputValue"
-                    @input="updateInput"
                     v-on:keypress.enter="addTask"
+                    required
                     > 
-                <button @click="addTask" class="btn">Add a new task</button>
+                <button class="btn" type="submit">Add a new task</button>
             </form>
       </div>
     </header>
@@ -30,13 +30,10 @@
                 this.$emit('create', this.task);
                 this.task = {
                     inputValue: ''
-                }
-            },
-            updateInput(event) {
-                this.task.inputValue = event.target.value;
             }
         }
     }
+}
 </script>
  
 <style scoped>

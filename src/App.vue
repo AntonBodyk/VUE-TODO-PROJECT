@@ -21,8 +21,8 @@ import CompletedTask from './components/CompletedTask.vue';
         }
       },
       methods: {
-        addTask(task) {
-              this.newtasks.push(task);
+        addTask(inputValue) {
+              this.newtasks.push(inputValue);
           },
         removeTask(task) {
           this.newtasks = this.newtasks.filter(item => item.id !== task.id);
